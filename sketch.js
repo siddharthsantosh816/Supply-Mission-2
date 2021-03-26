@@ -64,8 +64,22 @@ function draw() {
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-	Matter.Body.setStatic(packageBody, false)
-        
+	Matter.Body.setStatic(packageBody, false)    
+  }
+ if (keyCode === LEFT_ARROW) {
+	//Matter.Body.setStatic(helicopterBody, false)
+	helicopterBody.position.x = helicopterBody.position.x - 10
+	
+	if (packageBody.position.y === 200 ) {
+	   packageBody.position.x = packageBody.position.x - 10
+	}
+  }
+  if (keyCode === RIGHT_ARROW) {
+	//Matter.Body.setStatic(helicopterBody, false)
+	helicopterBody.position.x = helicopterBody.position.x + 10
+	if (packageBody.position.y === 200 ) {
+	   packageBody.position.x = packageBody.position.x + 10
+	}
   }
 }
 
