@@ -54,7 +54,10 @@ function draw() {
   background(0);
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
-
+	
+  helicopterSprite.x = helicopterBody.position.x;
+  helicopterSprite.y = helicopterBody.position.y;
+	
   box1.display(width/2-110,610);
   box2.display(width/2,650);
   box3.display(width/2+110,610);
