@@ -37,9 +37,9 @@ function setup() {
 	
 	Engine.run(engine);
 	ground1 = new Ground(0,670,1600,15);
-	box1=new Box(width/2+110,615,20,100);
-	box2=new Box(width/2,655,200,20);
-	box3=new Box(width/2-110,615,20,100);
+	box1=new Box(width/2+110,613,20,100);
+	box2=new Box(width/2,653,200,20);
+	box3=new Box(width/2-110,613,20,100);
 }
 
 
