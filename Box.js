@@ -1,6 +1,6 @@
 class Box{
 
-   constructor(x,y,width,height){
+    constructor(x,y,width,height){
        
       var options={
           restitution:0.3,
@@ -21,4 +21,9 @@ class Box{
         rect(pos.x,pos.y,this.width,this.height);
  
    }
+
+
+   
+
+
 }

@@ -1,5 +1,5 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,helicopterBody
+var packageBody,ground, helicopterBody
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
