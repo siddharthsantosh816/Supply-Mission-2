@@ -1,10 +1,10 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,ground, helicopterBody
+var packageBody,helicopterBody
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-var box1, box2, box3;
+var box1, box2, box3,ground1;
 
 function preload()
 {
@@ -18,14 +18,11 @@ function setup() {
 	
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
-	packageSprite.scale=0.2
+	packageSprite.scale=0.15
 
 	helicopterSprite=createSprite(width/2, 200, 10,10);
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6
-
-	groundSprite=createSprite(width/2, height-35, width,10);
-	groundSprite.shapeColor="grey";
 
 	engine = Engine.create();
 	world = engine.world;
@@ -37,13 +34,12 @@ function setup() {
 	World.add(world, helicopterBody);
 	
 	//Create a Ground
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
- 	World.add(world, ground);
-
+	
 	Engine.run(engine);
-	box1=new Box(width/2+110,610,20,100);
-	box2=new Box(width/2,640,200,20,{isStatic:true});
-	box3=new Box(width/2-110,610,20,100); 
+	ground1 = new Ground(0,670,1600,15);
+	box1=new Box(width/2+110,615,20,100);
+	box2=new Box(width/2,655,200,20);
+	box3=new Box(width/2-110,615,20,100);
 }
 
 
@@ -56,30 +52,29 @@ function draw() {
   helicopterSprite.x = helicopterBody.position.x;
   helicopterSprite.y = helicopterBody.position.y;
 	
-   box1.display(width/2+110,610);
-   box2.display(width/2,650);
-   box3.display(width/2-110,610);
+ 
+  ground1.display();
+  box1.display();
+  box2.display();
+  box3.display();
   drawSprites();
  
 }
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-	Matter.Body.setStatic(packageBody, false)    
+	Matter.Body.setStatic(packageBody, false)  
   }
  if (keyCode === LEFT_ARROW) {
-	//Matter.Body.setStatic(helicopterBody, false)
-	helicopterBody.position.x = helicopterBody.position.x - 10
-	
-	if (packageBody.position.y === 200 ) {
-	   packageBody.position.x = packageBody.position.x - 10
+	helicopterBody.position.x = helicopterBody.position.x - 15
+	if (packageBody.position.y === 200) {
+		Matter.Body.translate(packageBody,{x:-15,y:0});
 	}
-  }
+ }
   if (keyCode === RIGHT_ARROW) {
-	//Matter.Body.setStatic(helicopterBody, false)
-	helicopterBody.position.x = helicopterBody.position.x + 10
-	if (packageBody.position.y === 200 ) {
-	   packageBody.position.x = packageBody.position.x + 10
+	helicopterBody.position.x = helicopterBody.position.x + 15
+    if (packageBody.position.y === 200) {
+		Matter.Body.translate(packageBody,{x:15,y:0});
 	}
   }
 }
